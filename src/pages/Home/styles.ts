@@ -6,14 +6,6 @@ export const HomeContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  nav {
-    width: 100%;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 `;
 
 export const NavItemsContainer = styled.div`
