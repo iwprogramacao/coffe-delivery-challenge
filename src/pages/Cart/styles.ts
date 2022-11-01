@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const CartPageContainer = styled.main`
-  max-width: 75rem;
+  max-width: 74rem;
   padding: 2rem;
   margin: 0 auto;
 
   display: grid;
   grid-template-columns: 640px 448px;
+  gap: 2rem;
 
   h1 {
     font-family: "Baloo 2", sans-serif;
@@ -17,7 +18,7 @@ export const CartPageContainer = styled.main`
 export const DeliveryContainer = styled.div`
   margin-top: 1rem;
   padding: 2rem;
-  border-radius: 6px 44px 6px 44px;
+  border-radius: 6px;
   background-color: ${(props) => props.theme["gray-200"]};
 
   div:first-child {
@@ -43,18 +44,74 @@ export const FormContainer = styled.form`
   column-gap: 12px;
   row-gap: 16px;
 
-  label .cep {
-    grid-column: 1/3;
-  }
-  .cep {
-    grid-column: 1/3;
-  }
-
   input {
     border: none;
     border-radius: 4px;
     padding: 1rem;
     background-color: ${(props) => props.theme["gray-300"]};
     color: ${(props) => props.theme["purple-500"]};
+  }
+
+  .cep {
+    width: 200px;
+    grid-column: 1/4;
+  }
+
+  .rua {
+    width: 100%;
+    grid-column: 1/4;
+  }
+
+  .complemento {
+    width: 100%;
+    grid-column: 2/4;
+  }
+`;
+
+export const PaymentContainer = styled(DeliveryContainer)`
+  div:first-child {
+    color: ${(props) => props.theme["purple-500"]};
+  }
+`;
+
+export const PaymentMethodContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const PaymentButton = styled.button`
+  width: 11.25rem;
+  height: 51px;
+  padding: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: ${(props) => props.theme["gray-400"]};
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  gap: 0.75rem;
+  color: ${(props) => props.theme["gray-700"]};
+`;
+
+export const CartWrapper = styled.div`
+  margin-top: 1rem;
+  padding: 2rem;
+  border-radius: 6px 44px 6px 44px;
+  background-color: ${(props) => props.theme["gray-200"]};
+`;
+
+export const PricesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+
+    strong {
+      font-size: 1.625rem;
+    }
   }
 `;

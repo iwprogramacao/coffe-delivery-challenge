@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.nav`
-  max-width: 75rem;
+  max-width: 74rem;
   margin: 0 auto;
 
   width: 100%;
