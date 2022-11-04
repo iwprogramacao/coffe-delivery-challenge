@@ -1,4 +1,4 @@
-import { CurrencyDollar, MapPin, Money, Timer } from "phosphor-react";
+import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import motoboyDelivery from "../../assets/motoboy-delivery.png";
 import {
   DataDeliveryContainer,

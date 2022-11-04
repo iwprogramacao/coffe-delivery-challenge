@@ -53,9 +53,6 @@ export const ShoppingContainer = styled.div`
     border: none;
     background-color: ${(props) => props.theme["purple-500"]};
     color: ${(props) => props.theme["gray-100"]};
-
-    &:first-child {
-    }
   }
 `;
 
