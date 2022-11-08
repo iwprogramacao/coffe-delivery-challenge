@@ -1,5 +1,7 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
 import { useContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { CartItem } from "../../components/CartItem";
 import { ShoppingContext } from "../../contexts/ShoppingContext";
 import {
@@ -16,6 +18,7 @@ import {
 export function Cart() {
   const { shoppingList } = useContext(ShoppingContext);
   const [totalItems, setTotalItems] = useState(0);
+  const { register, handleSubmit } = useForm();
 
   useEffect(() => {
     if (!shoppingList) {
@@ -34,8 +37,12 @@ export function Cart() {
   }
 
   const DELIVERY_PRICE = 3.99;
-
   const cartTotal = DELIVERY_PRICE + totalItems;
+
+  const navigate = useNavigate();
+  function handleConfirmOrder(data: any) {
+    navigate("/delivery", { state: data });
+  }
 
   return (
     <CartPageContainer>
@@ -49,50 +56,60 @@ export function Cart() {
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
           </div>
-          <FormContainer action="">
+          <FormContainer
+            id="confirmOrder"
+            onSubmit={handleSubmit(handleConfirmOrder)}
+            action=""
+          >
             <input
-              name="cep"
               className="cep"
               type="text"
               placeholder="CEP"
+              required
+              {...register("cep")}
             />
 
             <input
-              name="rua"
               className="rua"
               type="text"
               placeholder="Rua"
+              required
+              {...register("rua")}
             />
-
             <input
-              name="numero"
               className="numero"
               type="text"
               placeholder="Número"
+              required
+              {...register("numero")}
             />
             <input
-              name="complemento"
               className="complemento"
               type="text"
               placeholder="Complemento"
+              required
+              {...register("complemento")}
             />
             <input
-              name="bairro"
               className="bairro"
               type="text"
               placeholder="Bairro"
+              required
+              {...register("bairro")}
             />
             <input
-              name="cidade"
               className="cidade"
               type="text"
               placeholder="Cidade"
+              required
+              {...register("cidade")}
             />
             <input
-              name="uf"
               className="uf"
               type="text"
               placeholder="UF"
+              required
+              {...register("uf")}
             />
           </FormContainer>
         </DeliveryContainer>
@@ -164,7 +181,14 @@ export function Cart() {
               <strong>Total</strong>
               <strong>R$ {cartTotal}</strong>
             </div>
-          </PricesContainer>{" "}
+
+            <button
+              form="confirmOrder"
+              type="submit"
+            >
+              Confirmar Pedido
+            </button>
+          </PricesContainer>
         </CartWrapper>
       </div>
     </CartPageContainer>

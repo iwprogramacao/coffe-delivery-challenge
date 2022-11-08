@@ -1,4 +1,5 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
+import { useLocation } from "react-router-dom";
 import motoboyDelivery from "../../assets/motoboy-delivery.png";
 import {
   DataDeliveryContainer,
@@ -8,6 +9,8 @@ import {
 } from "./styles";
 
 export function Delivery() {
+  const { state } = useLocation();
+
   return (
     <DeliveryContainer>
       <div>
@@ -20,9 +23,14 @@ export function Delivery() {
             {<MapPin size={24} />}
             <div>
               <p>
-                Entrega em <strong>Rua da bandeira, 836</strong>
+                Entrega em{" "}
+                <strong>
+                  {state.rua + "a"}, {state.numero}
+                </strong>
               </p>
-              <p>Centro - Cascavel, PR</p>
+              <p>
+                {state.bairro} - {state.cidade}, {state.uf}
+              </p>
             </div>
           </InfoDeliveryContainer>
           <InfoDeliveryContainer>

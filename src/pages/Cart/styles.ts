@@ -114,4 +114,15 @@ export const PricesContainer = styled.div`
       font-size: 1.625rem;
     }
   }
+
+  button {
+    margin-block: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: ${({ theme }) => theme["yellow-500"]};
+    text-transform: uppercase;
+    color: ${({ theme }) => theme["gray-100"]};
+    font-weight: bold;
+  }
 `;
