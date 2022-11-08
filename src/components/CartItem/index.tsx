@@ -1,5 +1,6 @@
 import { Minus, Plus, Trash } from "phosphor-react";
-import coffeImage from "../../assets/products/expresso.png";
+import { useContext } from "react";
+import { CoffeeAttributes, ShoppingContext } from "../../contexts/ShoppingContext";
 
 import {
   CartItemContainer,
@@ -8,19 +9,33 @@ import {
   RemoverButton,
 } from "./styles";
 
-export function CartItem() {
+export function CartItem({ image, name, quantity, price }: CoffeeAttributes) {
+  const { changeCartItemQuantity, removeCartItem } = useContext(ShoppingContext);
+
+  function handleIncreaseCoffee() {
+    changeCartItemQuantity(name, "increase");
+  }
+
+  function handleDecreaseCoffee() {
+    changeCartItemQuantity(name, "decrease");
+  }
+
+  function handleRemoveItem() {
+    removeCartItem(name);
+  }
+
   return (
     <CartItemContainer>
       <img
-        src={coffeImage}
+        src={image}
         alt=""
       />
       <div>
-        <p>Expresso Tradicional</p>
+        <p>{name}</p>
         <QuantityControllerContainer>
           <div>
             <RemoveAndAddContainer>
-              <button>
+              <button onClick={handleDecreaseCoffee}>
                 {
                   <Minus
                     size={14}
@@ -28,8 +43,8 @@ export function CartItem() {
                   />
                 }
               </button>
-              <span>1</span>
-              <button>
+              <span>{quantity}</span>
+              <button onClick={handleIncreaseCoffee}>
                 {
                   <Plus
                     size={14}
@@ -38,11 +53,13 @@ export function CartItem() {
                 }
               </button>
             </RemoveAndAddContainer>
-            <RemoverButton>{<Trash color={"#8047F8"} />} Remover</RemoverButton>
+            <RemoverButton onClick={handleRemoveItem}>
+              {<Trash color={"#8047F8"} />} Remover
+            </RemoverButton>
           </div>
         </QuantityControllerContainer>
       </div>
-      <strong>R$ 19,90</strong>
+      <strong>R$ {price}</strong>
     </CartItemContainer>
   );
 }

@@ -18,30 +18,29 @@ interface CardProps {
 }
 
 export function Card({ image, tags, name, description, price }: CardProps) {
-  const [coffeQuantity, setCoffeQuantity] = useState(1);
+  const [coffeeQuantity, setCoffeeQuantity] = useState(1);
 
-  const { addCoffeeList } = useContext(ShoppingContext);
+  const { shoppingList, addCoffeeToCart } = useContext(ShoppingContext);
 
   function handleIncreaseCoffeQuantity() {
-    const coffeIncreased = coffeQuantity + 1;
-    setCoffeQuantity(coffeIncreased);
+    setCoffeeQuantity((state) => state + 1);
   }
 
   function handleDecreaseCoffeQuantity() {
-    if (coffeQuantity <= 1) {
-      setCoffeQuantity(1);
+    if (coffeeQuantity <= 1) {
+      setCoffeeQuantity(1);
     } else {
-      const coffeIncreased = coffeQuantity - 1;
-      setCoffeQuantity(coffeIncreased);
+      setCoffeeQuantity((state) => state - 1);
     }
   }
 
   function handleAddToCart() {
-    addCoffeeList({
+    addCoffeeToCart({
       id: new Date(),
-      coffeeName: name,
+      image: image,
+      name: name,
       price: price,
-      quantity: coffeQuantity,
+      quantity: coffeeQuantity,
     });
   }
 
@@ -64,7 +63,7 @@ export function Card({ image, tags, name, description, price }: CardProps) {
         <strong>{price.toString()}</strong>
         <QuantityControllerContainer>
           <button onClick={handleDecreaseCoffeQuantity}>{<Minus />}</button>
-          <span>{coffeQuantity}</span>
+          <span>{coffeeQuantity}</span>
           <button onClick={handleIncreaseCoffeQuantity}>{<Plus />}</button>
         </QuantityControllerContainer>
         <button onClick={handleAddToCart}>{<ShoppingCart size={22} />}</button>

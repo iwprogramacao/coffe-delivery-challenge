@@ -1,5 +1,7 @@
-import { Bank, Cards, CreditCard, CurrencyDollar, MapPin, MapPinLine, Money } from "phosphor-react";
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { useContext, useEffect, useState } from "react";
 import { CartItem } from "../../components/CartItem";
+import { ShoppingContext } from "../../contexts/ShoppingContext";
 import {
   CartPageContainer,
   CartWrapper,
@@ -12,6 +14,29 @@ import {
 } from "./styles";
 
 export function Cart() {
+  const { shoppingList } = useContext(ShoppingContext);
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    if (!shoppingList) {
+      setTotalItems(0);
+    } else {
+      calculateTotalItems();
+    }
+  }, [shoppingList]);
+
+  function calculateTotalItems() {
+    setTotalItems(
+      shoppingList
+        .map((coffee) => coffee.price * coffee.quantity)
+        .reduce((total, coffee) => total + coffee, 0)
+    );
+  }
+
+  const DELIVERY_PRICE = 3.99;
+
+  const cartTotal = DELIVERY_PRICE + totalItems;
+
   return (
     <CartPageContainer>
       <div>
@@ -114,22 +139,30 @@ export function Cart() {
         <h1>Cafés selecionados</h1>
         <CartWrapper>
           <div>
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            {shoppingList.map((coffee) => {
+              return (
+                <CartItem
+                  id={coffee.id}
+                  name={coffee.name}
+                  image={coffee.image}
+                  quantity={coffee.quantity}
+                  price={coffee.price * coffee.quantity}
+                />
+              );
+            })}
           </div>
           <PricesContainer>
             <div>
               <span>Total de itens</span>
-              <span>R$ 29,70</span>
+              <span>R$ {totalItems}</span>
             </div>
             <div>
               <span>Entrega</span>
-              <span>R$ 3,50</span>
+              <span>R$ 3.99</span>
             </div>
             <div>
               <strong>Total</strong>
-              <strong>R$ 33,20</strong>
+              <strong>R$ {cartTotal}</strong>
             </div>
           </PricesContainer>{" "}
         </CartWrapper>
