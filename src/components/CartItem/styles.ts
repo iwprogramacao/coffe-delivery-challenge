@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CartItemContainer = styled.main`
+export const CartItemContainer = styled.article`
   display: flex;
   gap: 1.25rem;
   border-bottom: 2px solid ${(props) => props.theme["gray-300"]};
