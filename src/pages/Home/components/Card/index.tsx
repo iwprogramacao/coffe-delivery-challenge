@@ -10,6 +10,10 @@ import {
 } from "./styles";
 
 interface CardProps {
+  coffee: CoffeeProps;
+}
+export interface CoffeeProps {
+  id: string;
   image: string;
   tags: string[];
   name: string;
@@ -17,16 +21,16 @@ interface CardProps {
   price: number;
 }
 
-export function Card({ image, tags, name, description, price }: CardProps) {
+export function Card({ coffee }: CardProps) {
   const [coffeeQuantity, setCoffeeQuantity] = useState(1);
 
-  const { shoppingList, addCoffeeToCart } = useContext(ShoppingContext);
+  const { addCoffeeToCart } = useContext(ShoppingContext);
 
-  function handleIncreaseCoffeQuantity() {
+  function handleIncreaseCoffeeQuantity() {
     setCoffeeQuantity((state) => state + 1);
   }
 
-  function handleDecreaseCoffeQuantity() {
+  function handleDecreaseCoffeeQuantity() {
     if (coffeeQuantity <= 1) {
       setCoffeeQuantity(1);
     } else {
@@ -34,39 +38,48 @@ export function Card({ image, tags, name, description, price }: CardProps) {
     }
   }
 
+  function moneyConverter(price: number) {
+    const priceConverted = price.toFixed(2).replace(".", ",");
+    return priceConverted;
+  }
+
   function handleAddToCart() {
     addCoffeeToCart({
-      id: new Date(),
-      image: image,
-      name: name,
-      price: price,
+      id: coffee.id,
+      image: coffee.image,
+      name: coffee.name,
+      price: coffee.price,
       quantity: coffeeQuantity,
     });
   }
 
   return (
     <CardContainer>
-      <img
-        src={image}
-        alt=""
-      />
+      <img src={coffee.image} />
       <TagContainer>
-        {tags.map((tag) => {
-          return <span key={tag.length}>{tag}</span>;
+        {coffee.tags.map((tags) => {
+          return <span key={coffee.id}>{tags}</span>;
         })}
       </TagContainer>
 
-      <strong>{name}</strong>
-      <p>{description}</p>
+      <strong>{coffee.name}</strong>
+      <p>{coffee.description}</p>
       <ShoppingContainer>
         <span>R$</span>
-        <strong>{price.toString()}</strong>
+        <strong>{moneyConverter(coffee.price)}</strong>
         <QuantityControllerContainer>
-          <button onClick={handleDecreaseCoffeQuantity}>{<Minus />}</button>
+          <button onClick={handleDecreaseCoffeeQuantity}>{<Minus />}</button>
           <span>{coffeeQuantity}</span>
-          <button onClick={handleIncreaseCoffeQuantity}>{<Plus />}</button>
+          <button onClick={handleIncreaseCoffeeQuantity}>{<Plus />}</button>
         </QuantityControllerContainer>
-        <button onClick={handleAddToCart}>{<ShoppingCart size={22} />}</button>
+        <button onClick={handleAddToCart}>
+          {
+            <ShoppingCart
+              size={22}
+              weight="fill"
+            />
+          }
+        </button>
       </ShoppingContainer>
     </CardContainer>
   );

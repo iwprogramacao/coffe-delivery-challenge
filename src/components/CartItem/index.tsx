@@ -24,6 +24,11 @@ export function CartItem({ image, name, quantity, price }: CoffeeAttributes) {
     removeCartItem(name);
   }
 
+  function moneyConverter(price: number) {
+    const priceConverted = price.toFixed(2).replace(".", ",");
+    return priceConverted;
+  }
+
   return (
     <CartItemContainer>
       <img
@@ -43,7 +48,7 @@ export function CartItem({ image, name, quantity, price }: CoffeeAttributes) {
                   />
                 }
               </button>
-              <span>{quantity}</span>
+              <span>{quantity >= 1 ? quantity : 1}</span>
               <button onClick={handleIncreaseCoffee}>
                 {
                   <Plus
@@ -59,7 +64,7 @@ export function CartItem({ image, name, quantity, price }: CoffeeAttributes) {
           </div>
         </QuantityControllerContainer>
       </div>
-      <strong>R$ {price}</strong>
+      <strong>R$ {moneyConverter(price)}</strong>
     </CartItemContainer>
   );
 }

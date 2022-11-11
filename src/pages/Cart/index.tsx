@@ -39,6 +39,11 @@ export function Cart() {
   const DELIVERY_PRICE = 3.99;
   const cartTotal = DELIVERY_PRICE + totalItems;
 
+  function moneyConverter(price: number) {
+    const priceConverted = price.toFixed(2).replace(".", ",");
+    return priceConverted;
+  }
+
   const navigate = useNavigate();
   function handleConfirmOrder(data: any) {
     navigate("/delivery", { state: data });
@@ -171,15 +176,15 @@ export function Cart() {
           <PricesContainer>
             <div>
               <span>Total de itens</span>
-              <span>R$ {totalItems}</span>
+              <span>R$ {moneyConverter(totalItems)}</span>
             </div>
             <div>
               <span>Entrega</span>
-              <span>R$ 3.99</span>
+              <span>R$ 3,99</span>
             </div>
             <div>
               <strong>Total</strong>
-              <strong>R$ {cartTotal}</strong>
+              <strong>R$ {moneyConverter(cartTotal)}</strong>
             </div>
 
             <button

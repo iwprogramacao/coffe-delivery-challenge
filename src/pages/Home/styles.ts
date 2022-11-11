@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const HomeContainer = styled.main`
-  max-width: 75rem;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,24 +10,6 @@ export const NavItemsContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-
-  > div {
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    background-color: ${(props) => props.theme["purple-300"]};
-    padding: 0.5rem;
-    gap: 0.25rem;
-    color: ${(props) => props.theme["purple-700"]};
-  }
-
-  button {
-    border-radius: 6px;
-    border: none;
-    padding: 0.5rem;
-    color: ${(props) => props.theme["yellow-700"]};
-    background-color: ${(props) => props.theme["yellow-300"]};
-  }
 `;
 
 export const LayoutContainer = styled.div`
@@ -37,6 +17,10 @@ export const LayoutContainer = styled.div`
   padding: 2rem;
   display: flex;
   justify-content: center;
+
+  > div {
+    display: flex;
+  }
 `;
 
 export const MainInfoContainer = styled.div`

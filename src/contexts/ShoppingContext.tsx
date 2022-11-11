@@ -6,7 +6,7 @@ interface ShoppingContextProviderProps {
 }
 
 export interface CoffeeAttributes {
-  id: Date;
+  id: string;
   image: string;
   name: string;
   price: number;
@@ -50,8 +50,11 @@ export function ShoppingContextProvider({ children }: ShoppingContextProviderPro
       if (coffeAlreadyExistsInCart >= 0) {
         const item = draft[coffeAlreadyExistsInCart];
 
-        draft[coffeAlreadyExistsInCart].quantity =
-          type === "increase" ? item.quantity + 1 : item.quantity - 1;
+        if (type === "increase") {
+          item.quantity++;
+        } else if (type === "decrease" && item.quantity > 1) {
+          item.quantity--;
+        }
       }
     });
 
