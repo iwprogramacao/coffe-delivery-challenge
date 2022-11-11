@@ -1,7 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
-import { v4 } from "uuid";
-
 import embalagemCoffee from "../../assets/embalagem-cafe-com-fundo-colorido.png";
+import { StyledIcon } from "../../components/StyledIcon";
 import { coffeeList } from "../../data/coffees";
 import { Card } from "./components/Card";
 import { HomeContainer, LayoutContainer, MainInfoContainer, MenuGrid } from "./styles";
@@ -12,41 +11,41 @@ export function Home() {
       <LayoutContainer>
         <div className="wrapper">
           <MainInfoContainer>
-            <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-            <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
             <div>
+              <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+              <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
               <div>
-                <span>
+                <StyledIcon
+                  text="Compra simples e segura"
+                  variant="dark-yellow"
+                >
                   <ShoppingCart weight="fill" />
-                </span>
-                <p>Compra simples e segura</p>
-              </div>
-              <div>
-                <span>
+                </StyledIcon>
+                <StyledIcon
+                  text="Embalagem mantém o café intacto"
+                  variant="gray"
+                >
                   <Package weight="fill" />
-                </span>
-                <p>Embalagem mantém o café intacto</p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>
+                </StyledIcon>
+                <StyledIcon
+                  text="Entrega rápida e rastreada"
+                  variant="light-yellow"
+                >
                   <Timer weight="fill" />
-                </span>
-                <p>Entrega rápida e rastreada</p>
-              </div>
-              <div>
-                <span>
+                </StyledIcon>
+                <StyledIcon
+                  text="O café chega fresquinho até você"
+                  variant="purple"
+                >
                   <Coffee weight="fill" />
-                </span>
-                <p>O café chega fresquinho até você</p>
+                </StyledIcon>
               </div>
             </div>
+            <img
+              src={embalagemCoffee}
+              alt="Copo descartável para café com fundo amarelo"
+            />
           </MainInfoContainer>
-          <img
-            src={embalagemCoffee}
-            alt="Copo descartável para café com fundo amarelo"
-          />
         </div>
       </LayoutContainer>
       <MenuGrid>

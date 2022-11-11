@@ -4,12 +4,7 @@ export const HomeContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const NavItemsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  margin-bottom: 5.5rem;
 `;
 
 export const LayoutContainer = styled.div`
@@ -18,14 +13,21 @@ export const LayoutContainer = styled.div`
   display: flex;
   justify-content: center;
 
+  background: url("/background-title.png");
+
   > div {
     display: flex;
+    align-items: center;
   }
 `;
 
 export const MainInfoContainer = styled.div`
-  width: 36.75rem;
-  margin-right: 3.5rem;
+  width: 100%;
+  height: 32rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  align-items: center;
 
   h1 {
     font-family: "Baloo 2", sans-serif;
@@ -35,35 +37,21 @@ export const MainInfoContainer = styled.div`
     margin-bottom: 1rem;
   }
 
-  > p {
+  > div > div {
+    display: grid;
+    grid-template-columns: 233px 296px;
+    column-gap: 2.5rem;
+    row-gap: 1.25rem;
+  }
+  > div > p {
     font-size: 1.25rem;
     color: ${(props) => props.theme["gray-800"]};
     margin-bottom: 4.125rem;
   }
 
-  div {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 0.875rem;
-    margin-bottom: 0.5rem;
-
-    span {
-      height: 2rem;
-      width: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background-color: ${(props) => props.theme["purple-500"]};
-      color: ${(props) => props.theme["gray-100"]};
-    }
-
-    > p {
-      font-size: 1rem;
-      line-height: 1.3;
-      color: ${(props) => props.theme["gray-700"]};
-    }
+  img {
+    margin-left: 10px;
+    height: 360px;
   }
 `;
 

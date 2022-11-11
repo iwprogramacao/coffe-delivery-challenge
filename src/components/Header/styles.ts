@@ -11,6 +11,11 @@ export const HeaderContainer = styled.nav`
   }
 `;
 
+export const NavItemsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
 interface HeaderButtonProps {
   variant: "purple" | "yellow";
 }
