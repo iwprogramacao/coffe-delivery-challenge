@@ -164,6 +164,7 @@ export function Cart() {
             {shoppingList.map((coffee) => {
               return (
                 <CartItem
+                  key={coffee.id}
                   id={coffee.id}
                   name={coffee.name}
                   image={coffee.image}

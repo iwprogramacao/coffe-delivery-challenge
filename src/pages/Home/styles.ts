@@ -23,11 +23,12 @@ export const LayoutContainer = styled.div`
 
 export const MainInfoContainer = styled.div`
   width: 100%;
-  height: 32rem;
+  height: 28rem;
   display: flex;
   justify-content: space-between;
   gap: 3rem;
   align-items: center;
+  margin-bottom: 2rem;
 
   h1 {
     font-family: "Baloo 2", sans-serif;
@@ -62,7 +63,7 @@ export const MenuGrid = styled.div`
   h2 {
     width: 100%;
     font-family: "Baloo 2", sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     line-height: 1.3;
     font-weight: 800;
     margin-bottom: 3rem;

@@ -3,9 +3,9 @@ import { v4 } from "uuid";
 export const coffeeList = [
   {
     id: v4(),
-    image: "products/latte.png",
+    image: "products/expresso.png",
     tags: ["Tradicional"],
-    name: "Expresso",
+    name: "Expresso Tradicional",
     description: "O tradicional café feito com água quente e grãos moídos",
     price: 6.99,
   },

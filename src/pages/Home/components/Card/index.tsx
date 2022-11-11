@@ -1,5 +1,6 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { useContext, useState } from "react";
+import { v4 } from "uuid";
 import { ShoppingContext } from "../../../../contexts/ShoppingContext";
 
 import {
@@ -58,7 +59,7 @@ export function Card({ coffee }: CardProps) {
       <img src={coffee.image} />
       <TagContainer>
         {coffee.tags.map((tags) => {
-          return <span key={coffee.id}>{tags}</span>;
+          return <span key={v4()}>{tags}</span>;
         })}
       </TagContainer>
 
