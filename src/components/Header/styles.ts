@@ -40,6 +40,7 @@ export const HeaderButton = styled.button<HeaderButtonProps>`
     top: calc(-1.25rem / 2);
     right: calc(-1.25rem / 2);
     color: ${({ theme }) => theme["gray-100"]};
+    background-color: ${({ theme }) => theme["yellow-700"]};
     display: flex;
     align-items: center;
     justify-content: center;
